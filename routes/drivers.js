@@ -3,22 +3,19 @@
  * 
  * DISLAIMER: This file is written under the guidance of Hector Guo
  */
-
 'use strict';
 
 var express = require('express');
 var router = express.Router();
-const Driver = require('../models/driver');
-const Car = require('../models/car');
-const PayAccount = require('../models/paymentAccount');
+var Driver = require('../models/driver');
+var Car = require('../models/car');
+var PayAccount = require('../models/paymentAccount');
+var utils = require('../utils');
 
-const utils = require('../utils');
-const ModelHandle = require('./handler');
-
-
-const driverHandle = new ModelHandle(Driver, 'Driver');
-const carHandle = new ModelHandle(Car, 'Car');
-const accountHandle = new ModelHandle(PayAccount, 'Payment Account');
+var ModelHandle = require('./handler');
+var driverHandle = new ModelHandle(Driver, 'Driver');
+var carHandle = new ModelHandle(Car, 'Car');
+var accountHandle = new ModelHandle(PayAccount, 'Payment Account');
 
 router.route('/drivers')
     /**

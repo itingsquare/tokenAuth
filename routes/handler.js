@@ -2,7 +2,7 @@
 
 'use strict';
 
-const utils = require('../utils'); 
+var utils = require('../utils'); 
 
 /**
  * CRUD factory (used for handling models)
@@ -16,7 +16,7 @@ class ModelHandle {
     }
     get(id) {
         return new Promise((resolve, reject) => {
-            const Model = this.model;
+            var Model = this.model;
             if (!id) {
                 Model.find((err, items) => {
                     if (err) {
@@ -41,7 +41,7 @@ class ModelHandle {
         });
     }
     create(info) {
-        return new Promise((resolve, reject) => {
+        return new Promise(function(resolve, reject) {
             if (!info || !Object.keys(info).length) {
                 // simulate mongoose error
                 reject({
@@ -58,8 +58,8 @@ class ModelHandle {
                 });
             }
 
-            const Model = this.model;
-            const model = new Model(info);
+            var Model = this.model;
+            var model = new Model(info);
             // car.license = req.body.license;
 
             model.save((err) => {
@@ -75,7 +75,7 @@ class ModelHandle {
     }
     update(id, info) {
         return new Promise((resolve, reject) => {
-            const Model = this.model;
+            var Model = this.model;
             if (!info) {
                 utils.throwIfMissing('update info');
             }
@@ -99,7 +99,7 @@ class ModelHandle {
     }
     del(id) {
         return new Promise((resolve, reject) => {
-            const Model = this.model;
+            var Model = this.model;
             Model.remove({
                 _id: id
             }, (err, item) => {

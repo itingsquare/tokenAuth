@@ -1,21 +1,15 @@
 /**
- * Express Route: /rides
- * @version 0.0.2
- * 
  * DISLAIMER: This file is written under the guidance of Hector Guo
  */
 'use strict';
 
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
+var Ride = require('../models/ride');
+var utils = require('../utils');
+var ModelHandle = require('./handler');
 
-const Ride = require('../models/ride');
-const utils = require('../utils');
-const ModelHandle = require('./factory');
-
-
-const rideHandle = new ModelHandle(Ride, 'Ride');
-
+var rideHandle = new ModelHandle(Ride, 'Ride');
 
 router.route('/rides')
     /**
@@ -108,17 +102,8 @@ router.route('/rides/:ride_id/routePoints')
                 }
                 res.json({ msg: 'route points created', routePoints: ride.route })
             });
-        // rideHandle.get(req.params.ride_id)
-        //     .then((ride) => {
-        //         ride.route.push({ lat: req.body.lat, long: req.body.long });
-        //         ride.save((err) => {
-        //             if (err) {
-        //                 utils.handleMongooError(err, res);
-        //             }
-        //             res.json({ msg: 'route points created', routePoints: ride.route })
-        //         });
-        //     })
     })
+
     .get((req, res) => {
         rideHandle.get(req.params.ride_id)
             .then((ride) => {
@@ -136,9 +121,6 @@ router.route('/rides/:ride_id/routePoints/current')
                 }
                 res.json(ride.route);
             })
-    // rideHandle.get(req.params.ride_id).then((ride) => {
-    //     res.json(ride.route[ride.route.length - 1]);
-    // });
     })
 
 module.exports = router;

@@ -2,16 +2,13 @@
 
 'use strict';
 
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
+var PayAccount = require('../models/paymentAccount');
+var utils = require('../utils');
+var ModelHandle = require('./handler');
 
-const PayAccount = require('../models/paymentAccount');
-const utils = require('../utils');
-const ModelHandle = require('./factory');
-
-
-const accountHandle = new ModelHandle(PayAccount, 'Payment Account');
-
+var accountHandle = new ModelHandle(PayAccount, 'Payment Account');
 
 router.route('/paymentaccounts')
     /**

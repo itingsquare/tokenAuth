@@ -5,13 +5,11 @@
  */
 var express = require('express');
 var router = express.Router();
+var Car = require('../models/car');
+var utils = require('../utils');
+var ModelHandle = require('./handler');
 
-var Car = require('../app/models/car');
-var utils = require('../app/utils');
-
-const ModelHandle = require('./handler');
-
-const carHandle = new ModelHandle(Car, 'Car');
+var carHandle = new ModelHandle(Car, 'Car');
 
 router.route('/cars')
     /**

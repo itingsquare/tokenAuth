@@ -1,22 +1,14 @@
-/** 
- * Express Route: /passengers
- * 
- * DISLAIMER: This file is written under the guidance of Hector Guo
- */
-
 'use strict';
 
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
+var Passenger = require('../models/passenger');
+var PayAccount = require('../models/paymentAccount');
+var utils = require('../utils');
+var ModelHandle = require('./handler');
 
-const Passenger = require('../models/passenger');
-const PayAccount = require('../models/paymentAccount');
-const utils = require('../utils');
-const ModelHandle = require('./factory');
-
-
-const passengerHandle = new ModelHandle(Passenger, 'Passenger');
-const accountHandle = new ModelHandle(PayAccount, 'Payment Account');
+var passengerHandle = new ModelHandle(Passenger, 'Passenger');
+var accountHandle = new ModelHandle(PayAccount, 'Payment Account');
 
 router.route('/passengers')
     /**
