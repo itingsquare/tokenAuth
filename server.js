@@ -26,6 +26,8 @@ var cars = require('./routes/cars');
 var drivers = require('./routes/drivers');
 var passengers = require('./routes/passengers');
 var users = require('./routes/users');
+var rides = require('./routes/rides');
+var paymentAccounts = require('./routes/paymentAccounts');
 
 // setup and sessions router do not need to verify token
 app.use('/api', users);
@@ -88,6 +90,8 @@ app.use(function (req, res, next) {
 app.use('/api', cars);
 app.use('/api', drivers);
 app.use('/api', passengers);
+app.use('/api', rides);
+app.use('/api', paymentAccounts);
 //app.use('/api', router);
 /** END: Express Routes Definition */
 

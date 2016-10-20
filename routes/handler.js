@@ -5,7 +5,7 @@
 var utils = require('../utils'); 
 
 /**
- * CRUD factory (used for handling models)
+ * CRUD  (used for handling models)
  * param model {Object} mongoose schema
  * param name {String} model's name
  */
@@ -41,6 +41,7 @@ class ModelHandle {
         });
     }
     create(info) {
+        var Model = this.model;
         return new Promise(function(resolve, reject) {
             if (!info || !Object.keys(info).length) {
                 // simulate mongoose error
@@ -58,7 +59,7 @@ class ModelHandle {
                 });
             }
 
-            var Model = this.model;
+            // var Model = this.model;
             var model = new Model(info);
             // car.license = req.body.license;
 
